@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fantasy History Map</title>
+
+    <!-- MapLibre のスタイル -->
+    <link href="https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.css" rel="stylesheet">
+
+    <!-- 自作CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- UI：モード切り替えボタン・国一覧トグル -->
+    <div id="ui">
+        <button id="modeToggle">fantasy-map に切り替え</button>
+        <button id="listToggle">国一覧</button>
+    </div>
+
+    <!-- 国一覧パネル（開閉式） -->
+    <div id="country-list" class="hidden">
+        <ul id="country-list-items"></ul>
+    </div>
+
+    <!-- 地図本体 -->
+    <div id="map"></div>
+
+    <!-- ファンタジーモード時に重ねる紙テクスチャ（CSSで表示/非表示を切替） -->
+    <div id="paper-overlay"></div>
+
+    <!-- MapLibre 本体 -->
+    <script src="https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.js"></script>
+
+    <!-- アプリのエントリポイント（ES Modulesとして読み込む） -->
+    <script type="module" src="main.js"></script>
+
+</body>
+
+</html>
