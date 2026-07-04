@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#111111;
+    --muted:#6b6b6b;
+    --line:#e6e6e6;
+    --accent:#2b4eff;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", sans-serif;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:960px;
+    margin:0 auto;
+    padding:80px 24px 120px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    margin-bottom:96px;
+  }
+
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    letter-spacing:.2em;
+    color:var(--muted);
+    margin-bottom:20px;
+  }
+
+  .eyebrow::before{
+    content:"";
+    width:24px;
+    height:2px;
+    background:var(--accent);
+  }
+
+  h1{
+    font-family:"Zen Kaku Gothic New", sans-serif;
+    font-weight:900;
+    font-size:clamp(32px, 6vw, 56px);
+    letter-spacing:.04em;
+    line-height:1.3;
+  }
+
+  header p{
+    margin-top:20px;
+    color:var(--muted);
+    font-size:15px;
+    max-width:480px;
+  }
+
+  /* ---------- Member cards ---------- */
+  .members{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .member{
+    position:relative;
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+    align-items:center;
+    padding:56px 0;
+    border-top:1px solid var(--line);
+  }
+
+  .members .member:last-child{
+    border-bottom:1px solid var(--line);
+  }
+
+  .member-index{
+    position:absolute;
+    top:8px;
+    right:0;
+    font-family:"Zen Kaku Gothic New", sans-serif;
+    font-weight:900;
+    font-size:120px;
+    line-height:1;
+    color:var(--bg);
+    -webkit-text-stroke:1px var(--line);
+    z-index:0;
+    user-select:none;
+  }
+
+  .photo-wrap{
+    position:relative;
+    width:160px;
+    height:160px;
+    z-index:1;
+  }
+
+  .photo-wrap .ring{
+    position:absolute;
+    inset:-8px;
+    border-radius:50%;
+    border:2px solid var(--accent);
+    opacity:0;
+    transform:scale(.9);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+
+  .photo{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    background:#eee;
+    filter:grayscale(100%) contrast(1.02);
+    transition:filter .5s ease;
+  }
+
+  .member:hover .photo{
+    filter:grayscale(0%) contrast(1.02);
+  }
+
+  .member:hover .photo-wrap .ring{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  .photo-placeholder{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background:#f2f2f2;
+    border:1px dashed #c9c9c9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    color:var(--muted);
+    text-align:center;
+    line-height:1.6;
+    padding:12px;
+  }
+
+  .info{
+    position:relative;
+    z-index:1;
+  }
+
+  .name-row{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+
+  .name{
+    font-family:"Zen Kaku Gothic New", sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:.03em;
+  }
+
+  .role{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    letter-spacing:.05em;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    border-radius:999px;
+    padding:4px 12px;
+  }
+
+  .role::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+
+  .comment{
+    color:var(--ink);
+    font-size:16px;
+    max-width:520px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:96px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px){
+    .page{ padding:56px 20px 80px; }
+    .member{
+      grid-template-columns:1fr;
+      justify-items:start;
+      padding:40px 0;
+    }
+    .member-index{
+      font-size:72px;
+      top:0;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <div class="eyebrow">TEAM</div>
+      <h1>team CAN</h1>
+      <p>現実を、少し変った視点から見てみる。</p>
+    </header>
+
+    <div class="members">
+
+      <div class="member">
+        <div class="member-index">01</div>
+
+        <div class="photo-wrap">
+          <div class="ring"></div>
+          <!-- 写真がある場合は下のdivを <img class="photo" src="写真のファイル名" alt="メンバー1"> に差し替えてください -->
+          <img class="photo" src="photo2.jpg" alt="メンバー1">
+        </div>
+
+        <div class="info">
+          <div class="name-row">
+            <span class="name">小林亜伎那</span>
+            <span class="role">情報収集 / アイデア提供</span>
+          </div>
+          <p class="comment">パソコン苦手なので、情報とアイデアはがんばります。</p>
+        </div>
+      </div>
+
+      <div class="member">
+        <div class="member-index">02</div>
+
+        <div class="photo-wrap">
+          <div class="ring"></div>
+          <!-- 写真がある場合は下のdivを <img class="photo" src="写真のファイル名" alt="メンバー2"> に差し替えてください -->
+          <img class="photo" src="photo.jpg" alt="メンバー2"> 
+        </div>
+
+        <div class="info">
+          <div class="name-row">
+            <span class="name">太田和毅</span>
+            <span class="role">コード / テキスト</span>
+          </div>
+          <p class="comment">がんばるぞ、えい、えい、おー。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <span>Team Introduction</span>
+      <span>2026</span>
+    </footer>
+
+  </div>
+</body>
+</html>

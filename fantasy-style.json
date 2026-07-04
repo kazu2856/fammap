@@ -1,13 +1,12 @@
 {
   "version": 8,
+  "sprite": "http://127.0.0.1:5500/sprite",
+  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
   "sources": {
-    "osm": {
-      "type": "raster",
-      "tiles": [
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-      ],
-      "tileSize": 256,
-      "attribution": "&copy; OpenStreetMap Contributors"
+    "demotiles": {
+      "type": "vector",
+      "tiles": ["https://demotiles.maplibre.org/tiles/{z}/{x}/{y}.pbf"],
+      "maxzoom": 6
     }
   },
   "layers": [
@@ -19,23 +18,52 @@
       }
     },
     {
-      "id": "osm-layer",
-      "type": "raster",
-      "source": "osm",
+      "id": "coastline",
+      "type": "fill",
+      "source": "demotiles",
+      "source-layer": "countries",
       "paint": {
-        "raster-hue-rotate": 25,
-        "raster-saturation": -0.75,
-        "raster-contrast": 0.4,
-        "raster-brightness-min": 0.1,
-        "raster-brightness-max": 0.7
+        "fill-color": "#d4c49a",
+        "fill-outline-color": "#a09060"
       }
     },
     {
-      "id": "overlay-sepia",
+      "id": "water",
+      "type": "fill",
+      "source": "demotiles",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "#8aabbf"
+      }
+    },
+    {
+      "id": "graticule",
+      "type": "line",
+      "source": "demotiles",
+      "source-layer": "graticule",
+      "paint": {
+        "line-color": "#a09060",
+        "line-opacity": 0.3,
+        "line-width": 0.5
+      }
+    },
+    {
+      "id": "countries-boundary",
+      "type": "line",
+      "source": "demotiles",
+      "source-layer": "countries",
+      "paint": {
+        "line-color": "#7a6040",
+        "line-width": 1.0,
+        "line-opacity": 0.8
+      }
+    },
+    {
+      "id": "paper-texture-layer",
       "type": "background",
       "paint": {
-        "background-color": "rgba(150, 110, 60, 0.25)",
-        "background-opacity": 1
+        "background-pattern": "paper-texture",
+        "background-opacity": 0.18
       }
     }
   ]

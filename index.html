@@ -21,6 +21,9 @@
         <button id="listToggle">国一覧</button>
     </div>
 
+    <!-- Team ページへのリンク（右上に固定） -->
+    <a id="teamLink" href="team.html" target="_blank" rel="noopener noreferrer">Team</a>
+
     <!-- 国一覧パネル（開閉式） -->
     <div id="country-list" class="hidden">
         <ul id="country-list-items"></ul>
@@ -28,9 +31,6 @@
 
     <!-- 地図本体 -->
     <div id="map"></div>
-
-    <!-- ファンタジーモード時に重ねる紙テクスチャ（CSSで表示/非表示を切替） -->
-    <div id="paper-overlay"></div>
 
     <!-- MapLibre 本体 -->
     <script src="https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.js"></script>
