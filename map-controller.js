@@ -3,9 +3,15 @@
 // ------------------------------------------------------------
 // 地図の初期化、マーカーの生成・破棄、スタイル切り替えを担当する。
 // UI（ボタンなど）からはこのモジュールが提供する関数だけを呼び出す。
+//
+// countries データは外部(main.js)から setCountries() で渡す。
+// データソース(CSVやハードコード)をこのモジュールは意識しない。
 // ============================================================
 
-import { countries, mapStyles, buildPopupHTML, getMarkerColor } from "./data.js";
+import { mapStyles, getMarkerColor } from "./data.js";
+
+// 現在の国データ(main.jsからsetCountriesで渡される)
+let countries = [];
 
 // 現在のマーカーとポップアップを保持する内部状態
 // { id: { marker, popup } } の形式
@@ -14,23 +20,44 @@ const markerState = {};
 let mapInstance = null;
 
 // ------------------------------------------------------------
-// 地図インスタンスを初期化する
+// 国データをセットする(main.jsから呼び出す)
 // ------------------------------------------------------------
-export function initMap(containerId) {
+export function setCountries(data) {
+    countries = data;
+}
+
+// ------------------------------------------------------------
+// 地図インスタンスを初期化する
+// onLoad: 地図ロード完了時に呼ばれるコールバック
+// ------------------------------------------------------------
+export function initMap(containerId, onLoad) {
     mapInstance = new maplibregl.Map({
         container: containerId,
-        style: mapStyles.real, // 最初は実際の地図
-        center: [139.6917, 35.6895], // 日本付近を初期表示
-        zoom: 4
+        style: mapStyles.real,
+        center: [139.6917, 35.6895],
+        zoom: 2
     });
 
     mapInstance.addControl(new maplibregl.NavigationControl());
 
     mapInstance.on("load", () => {
-        createAllMarkers(false); // 初回は real モード
+        if (typeof onLoad === "function") {
+            onLoad();
+        }
     });
 
     return mapInstance;
+}
+
+// ------------------------------------------------------------
+// ポップアップのHTMLを生成する
+// ------------------------------------------------------------
+function buildPopupHTML(country, isFantasy) {
+    const content = isFantasy ? country.popup.fantasy : country.popup.real;
+    return `
+        <h3>${content.title}</h3>
+        <p>${content.description}</p>
+    `;
 }
 
 // ------------------------------------------------------------
@@ -46,7 +73,7 @@ export function createAllMarkers(isFantasy) {
         );
 
         const marker = new maplibregl.Marker({
-            color: getMarkerColor(country, isFantasy)
+            color: getMarkerColor(country.category, isFantasy)
         })
             .setLngLat(country.coordinates)
             .setPopup(popup)
@@ -62,19 +89,14 @@ export function createAllMarkers(isFantasy) {
 export function removeAllMarkers() {
     Object.keys(markerState).forEach((id) => {
         const state = markerState[id];
-        if (state.popup) {
-            state.popup.remove();
-        }
-        if (state.marker) {
-            state.marker.remove();
-        }
+        if (state.popup) state.popup.remove();
+        if (state.marker) state.marker.remove();
         delete markerState[id];
     });
 }
 
 // ------------------------------------------------------------
-// どの国のポップアップが開いていたかを記録する
-// 戻り値: 開いていた国の id の配列
+// 開いているポップアップのIDを返す
 // ------------------------------------------------------------
 function getOpenPopupIds() {
     return Object.keys(markerState).filter((id) => {
@@ -91,17 +113,8 @@ function getOpenPopupIds() {
 export function switchMode(isFantasy, onComplete) {
     const openIds = getOpenPopupIds();
 
-    const targetStyle = isFantasy ? mapStyles.fantasy : mapStyles.real;
-    mapInstance.setStyle(targetStyle);
+    mapInstance.setStyle(isFantasy ? mapStyles.fantasy : mapStyles.real);
 
-    // setStyle 後、スタイルの読み込みが完了するまで待つ。
-    //
-    // 補足:
-    // "style.load" イベントは、setStyle() 実行から once() 登録までの間に
-    // 既に発火してしまい、リスナーが呼ばれないケースがある
-    // （スタイルがキャッシュ済みの場合など）。
-    // そのため isStyleLoaded() による状態確認を併用し、
-    // 取り逃しがあっても確実に後続処理が実行されるようにする。
     function waitForStyleLoaded() {
         if (mapInstance.isStyleLoaded()) {
             onStyleReady();
@@ -113,7 +126,6 @@ export function switchMode(isFantasy, onComplete) {
     function onStyleReady() {
         createAllMarkers(isFantasy);
 
-        // 切り替え前に開いていたポップアップを復元する
         openIds.forEach((id) => {
             const state = markerState[id];
             if (state && state.popup) {
@@ -130,24 +142,21 @@ export function switchMode(isFantasy, onComplete) {
 }
 
 // ------------------------------------------------------------
-// 指定した国の位置へ即座に移動し、ポップアップを開く
-// countryId: countries 配列内の id
+// 指定した国の位置へ flyTo で移動し、ポップアップを開く
 // ------------------------------------------------------------
 export function focusCountry(countryId) {
     const country = countries.find((c) => c.id === countryId);
     const state = markerState[countryId];
 
-    if (!country || !state) {
-        return;
-    }
+    if (!country || !state) return;
 
-    // アニメーションなしで一気に移動する
-    mapInstance.jumpTo({
+    mapInstance.flyTo({
         center: country.coordinates,
-        zoom: 5
+        zoom: 5,
+        speed: 1.2,
+        curve: 1.4
     });
 
-    // 他のポップアップを閉じてから対象のポップアップを開く
     Object.keys(markerState).forEach((id) => {
         const otherState = markerState[id];
         if (otherState.popup && otherState.popup.isOpen()) {
@@ -155,5 +164,14 @@ export function focusCountry(countryId) {
         }
     });
 
-    state.popup.addTo(mapInstance);
+    mapInstance.once("moveend", () => {
+        state.popup.addTo(mapInstance);
+    });
+}
+
+// ------------------------------------------------------------
+// 現在の countries データを返す(一覧パネルの描画に使用)
+// ------------------------------------------------------------
+export function getCountries() {
+    return countries;
 }
