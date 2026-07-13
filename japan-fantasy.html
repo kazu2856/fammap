@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>東方王国ニホン — Fantasy History Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #f1e4c3;
+      --ink:     #2c1a0e;
+      --muted:   #7a5c3a;
+      --line:    #c9a97a;
+      --accent:  #d4af37; /* 龍を象徴する金色 */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page { max-width: 960px; margin: 0 auto; padding: 80px 24px 120px; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 48px;
+    }
+
+    .back-link::before { content: "←"; }
+    .back-link:hover { color: var(--ink); }
+
+    header { margin-bottom: 80px; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--accent); }
+
+    h1 {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      font-weight: 900;
+      font-size: clamp(32px, 6vw, 56px);
+      letter-spacing: .04em;
+      line-height: 1.3;
+    }
+
+    header p { margin-top: 20px; color: var(--muted); font-size: 15px; max-width: 560px; }
+
+    .section { padding: 56px 0; border-top: 1px solid var(--line); }
+    .section:last-of-type { border-bottom: 1px solid var(--line); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .section-label::before { content: ""; width: 16px; height: 2px; background: var(--accent); }
+
+    h2 {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      font-weight: 700;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing: .04em;
+      margin-bottom: 16px;
+    }
+
+    .section p { font-size: 15px; color: var(--ink); max-width: 680px; }
+
+    .data-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 32px; }
+    .data-item { border-left: 2px solid var(--accent); padding-left: 16px; }
+    .data-item .label { font-size: 11px; letter-spacing: .15em; color: var(--muted); margin-bottom: 4px; }
+    .data-item .value { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 18px; }
+
+    .timeline { margin-top: 32px; display: flex; flex-direction: column; }
+    .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
+    .timeline-item:first-child { border-top: none; }
+    .timeline-year { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; font-size: 15px; color: var(--accent); padding-top: 2px; }
+    .timeline-text { font-size: 14px; color: var(--ink); }
+
+    footer {
+      margin-top: 96px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 48px 20px 80px; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 16px; }
+      .data-list { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <a class="back-link" href="index.html">地図に戻る</a>
+
+    <header>
+      <div class="eyebrow">FANTASY KINGDOM</div>
+      <h1>東方王国ニホン</h1>
+      <p>霊峰フジヤマを守護する龍族と契約を結んだ侍たちの国。龍脈の力が大地を流れ、刀に宿る霊気が敵を退ける東方の秘境。</p>
+    </header>
+
+    <div class="section">
+      <div class="section-label">KINGDOM DATA</div>
+      <h2>王国基本情報</h2>
+      <div class="data-list">
+        <div class="data-item">
+          <div class="label">正式国号</div>
+          <div class="value">東方龍契王国</div>
+        </div>
+        <div class="data-item">
+          <div class="label">王都</div>
+          <div class="value">江戸霊城</div>
+        </div>
+        <div class="data-item">
+          <div class="label">守護霊獣</div>
+          <div class="value">蒼龍フジ</div>
+        </div>
+        <div class="data-item">
+          <div class="label">主要階級</div>
+          <div class="value">龍契侍・陰陽師・忍</div>
+        </div>
+        <div class="data-item">
+          <div class="label">魔法体系</div>
+          <div class="value">龍脈術・刀霊魔法</div>
+        </div>
+        <div class="data-item">
+          <div class="label">カテゴリ</div>
+          <div class="value">東方諸国</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">LEGEND</div>
+      <h2>伝説の年代記</h2>
+      <p>龍族との古き契約から始まる、ニホンの神話と歴史の記録。</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">龍暦元年</div>
+          <div class="timeline-text">始祖の侍ヤマトが霊峰フジヤマの頂で蒼龍と契約を結ぶ。龍脈の力が列島に流れ始める。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">龍暦593年</div>
+          <div class="timeline-text">聖徳法師が陰陽魔法と龍脈術を統合。霊的統治体制「御霊律令」を制定。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">龍暦1185年</div>
+          <div class="timeline-text">龍契侍団が台頭し、幕府制度を確立。刀霊魔法が武士道の礎となる。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">龍暦1600年</div>
+          <div class="timeline-text">大将軍トクガワが龍脈の要衝・江戸に霊城を築き、260年の平和を実現。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">龍暦1868年</div>
+          <div class="timeline-text">龍明維新。西洋魔法技術を取り込み、龍脈術との融合が始まる。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">現龍暦</div>
+          <div class="timeline-text">龍脈術と機械文明が融合した魔導国家として、東方世界の要となっている。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">CULTURE</div>
+      <h2>文化と秘術</h2>
+      <p>刀に宿る霊気を扱う「刀霊道」、龍脈の流れを読む「地脈陰陽術」、忍の使う「幻術」の三大魔法体系を持つ。茶の湯は霊力を高める儀式として全侍階級で行われ、能楽は龍族との交信の場として今も続く。</p>
+    </div>
+
+    <footer>
+      <span>Fantasy History Map — 東方王国ニホン</span>
+      <span>龍暦2026年</span>
+    </footer>
+
+  </div>
+</body>
+</html>

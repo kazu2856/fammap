@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ドイツ — Fantasy History Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #ffffff;
+      --ink:     #111111;
+      --muted:   #6b6b6b;
+      --line:    #e6e6e6;
+      --accent:  #2c2c2c; /* 国旗の黒 */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page { max-width: 960px; margin: 0 auto; padding: 80px 24px 120px; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 48px;
+    }
+
+    .back-link::before { content: "←"; }
+    .back-link:hover { color: var(--ink); }
+
+    header { margin-bottom: 80px; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--accent); }
+
+    h1 {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      font-weight: 900;
+      font-size: clamp(32px, 6vw, 56px);
+      letter-spacing: .04em;
+      line-height: 1.3;
+    }
+
+    header p { margin-top: 20px; color: var(--muted); font-size: 15px; max-width: 560px; }
+
+    .section { padding: 56px 0; border-top: 1px solid var(--line); }
+    .section:last-of-type { border-bottom: 1px solid var(--line); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .section-label::before { content: ""; width: 16px; height: 2px; background: var(--accent); }
+
+    h2 {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      font-weight: 700;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing: .04em;
+      margin-bottom: 16px;
+    }
+
+    .section p { font-size: 15px; color: var(--ink); max-width: 680px; }
+
+    .data-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 32px; }
+    .data-item { border-left: 2px solid var(--accent); padding-left: 16px; }
+    .data-item .label { font-size: 11px; letter-spacing: .15em; color: var(--muted); margin-bottom: 4px; }
+    .data-item .value { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 18px; }
+
+    .timeline { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-item:first-child { border-top: none; }
+    .timeline-year { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; font-size: 15px; color: var(--accent); padding-top: 2px; }
+    .timeline-text { font-size: 14px; color: var(--ink); }
+
+    footer {
+      margin-top: 96px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 48px 20px 80px; }
+      .timeline-item { grid-template-columns: 72px 1fr; gap: 16px; }
+      .data-list { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <a class="back-link" href="index.html">地図に戻る</a>
+
+    <header>
+      <div class="eyebrow">COUNTRY</div>
+      <h1>ドイツ</h1>
+      <p>中央ヨーロッパに位置する連邦共和国。神聖ローマ帝国から統一ドイツへと発展し、工業・科学・哲学の分野で世界をリードしてきた。</p>
+    </header>
+
+    <div class="section">
+      <div class="section-label">BASIC DATA</div>
+      <h2>基本情報</h2>
+      <div class="data-list">
+        <div class="data-item">
+          <div class="label">正式名称</div>
+          <div class="value">ドイツ連邦共和国</div>
+        </div>
+        <div class="data-item">
+          <div class="label">首都</div>
+          <div class="value">ベルリン</div>
+        </div>
+        <div class="data-item">
+          <div class="label">面積</div>
+          <div class="value">約35.7万 km²</div>
+        </div>
+        <div class="data-item">
+          <div class="label">人口</div>
+          <div class="value">約8,400万人</div>
+        </div>
+        <div class="data-item">
+          <div class="label">言語</div>
+          <div class="value">ドイツ語</div>
+        </div>
+        <div class="data-item">
+          <div class="label">カテゴリ</div>
+          <div class="value">ヨーロッパ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">HISTORY</div>
+      <h2>歴史年表</h2>
+      <p>神聖ローマ帝国の中核として中世ヨーロッパを形成し、宗教改革・プロイセンの台頭・二度の世界大戦を経て現代のドイツへ至る。</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">962年</div>
+          <div class="timeline-text">神聖ローマ帝国成立。中世ヨーロッパの中心的な政治体制として約850年続く。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1517年</div>
+          <div class="timeline-text">マルティン・ルターが宗教改革を開始。キリスト教世界を二分する大変革をもたらす。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1871年</div>
+          <div class="timeline-text">ビスマルクのもとでドイツ統一。プロイセン主導のドイツ帝国が成立。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1914年</div>
+          <div class="timeline-text">第一次世界大戦勃発。敗戦後、ヴェルサイユ条約で多くの領土と権利を失う。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1939年</div>
+          <div class="timeline-text">第二次世界大戦勃発。1945年に敗戦し、東西に分断される。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1990年</div>
+          <div class="timeline-text">東西ドイツ統一。冷戦終結とともにヨーロッパ最大の経済大国として再出発。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">現代</div>
+          <div class="timeline-text">EU・NATOの中核として、ヨーロッパの政治・経済をリードする。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">CULTURE</div>
+      <h2>文化と特徴</h2>
+      <p>ベートーヴェン・バッハ・ゲーテなど、音楽・文学・哲学の巨人たちを生んだ国。自動車産業(BMW・メルセデス・フォルクスワーゲン)や精密機械技術でも世界をリードしている。ビールとソーセージの食文化、クリスマスマーケットも広く知られる。</p>
+    </div>
+
+    <footer>
+      <span>Fantasy History Map — Germany</span>
+      <span>2026</span>
+    </footer>
+
+  </div>
+</body>
+</html>

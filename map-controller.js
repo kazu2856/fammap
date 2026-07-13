@@ -51,12 +51,20 @@ export function initMap(containerId, onLoad) {
 
 // ------------------------------------------------------------
 // ポップアップのHTMLを生成する
+// isFantasy時は url_fantasy、realモード時は url を使用する
 // ------------------------------------------------------------
 function buildPopupHTML(country, isFantasy) {
     const content = isFantasy ? country.popup.fantasy : country.popup.real;
+    const url     = isFantasy ? (country.url_fantasy ?? "") : (country.url ?? "");
+
+    const linkHTML = url
+        ? `<a class="popup-link" href="${url}" target="_blank" rel="noopener noreferrer">詳しく見る →</a>`
+        : "";
+
     return `
         <h3>${content.title}</h3>
         <p>${content.description}</p>
+        ${linkHTML}
     `;
 }
 

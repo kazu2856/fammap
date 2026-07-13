@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聖鷲帝国ロマニア — Fantasy History Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #f1e4c3;
+      --ink:     #2c1a0e;
+      --muted:   #7a5c3a;
+      --line:    #c9a97a;
+      --accent:  #8e44ad; /* 聖鷲帝国を象徴する紫 */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--ink); font-family: "Noto Sans JP", sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 960px; margin: 0 auto; padding: 80px 24px 120px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .1em; color: var(--muted); text-decoration: none; margin-bottom: 48px; }
+    .back-link::before { content: "←"; }
+    .back-link:hover { color: var(--ink); }
+    header { margin-bottom: 80px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .2em; color: var(--muted); margin-bottom: 20px; }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--accent); }
+    h1 { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; font-size: clamp(32px, 6vw, 56px); letter-spacing: .04em; line-height: 1.3; }
+    header p { margin-top: 20px; color: var(--muted); font-size: 15px; max-width: 560px; }
+    .section { padding: 56px 0; border-top: 1px solid var(--line); }
+    .section:last-of-type { border-bottom: 1px solid var(--line); }
+    .section-label { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .2em; color: var(--muted); margin-bottom: 20px; }
+    .section-label::before { content: ""; width: 16px; height: 2px; background: var(--accent); }
+    h2 { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: clamp(20px, 3vw, 28px); letter-spacing: .04em; margin-bottom: 16px; }
+    .section p { font-size: 15px; color: var(--ink); max-width: 680px; }
+    .data-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 32px; }
+    .data-item { border-left: 2px solid var(--accent); padding-left: 16px; }
+    .data-item .label { font-size: 11px; letter-spacing: .15em; color: var(--muted); margin-bottom: 4px; }
+    .data-item .value { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 18px; }
+    .timeline { margin-top: 32px; display: flex; flex-direction: column; }
+    .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
+    .timeline-item:first-child { border-top: none; }
+    .timeline-year { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; font-size: 15px; color: var(--accent); padding-top: 2px; }
+    .timeline-text { font-size: 14px; color: var(--ink); }
+    footer { margin-top: 96px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+    @media (max-width: 640px) { .page { padding: 48px 20px 80px; } .timeline-item { grid-template-columns: 80px 1fr; gap: 16px; } .data-list { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <a class="back-link" href="index.html">地図に戻る</a>
+
+    <header>
+      <div class="eyebrow">FANTASY EMPIRE</div>
+      <h1>聖鷲帝国ロマニア</h1>
+      <p>神鳥アクイラの加護を受けた軍団が地中海世界を征服した伝説の帝国。神殿魔法と軍事錬金術が融合した古代の覇者。</p>
+    </header>
+
+    <div class="section">
+      <div class="section-label">EMPIRE DATA</div>
+      <h2>帝国基本情報</h2>
+      <div class="data-list">
+        <div class="data-item">
+          <div class="label">正式国号</div>
+          <div class="value">聖鷲神聖帝国ロマニア</div>
+        </div>
+        <div class="data-item">
+          <div class="label">帝都</div>
+          <div class="value">永遠の魔都ロマ</div>
+        </div>
+        <div class="data-item">
+          <div class="label">守護神獣</div>
+          <div class="value">神鳥アクイラ</div>
+        </div>
+        <div class="data-item">
+          <div class="label">主要階級</div>
+          <div class="value">神官騎士・神殿魔導師・鷲兵</div>
+        </div>
+        <div class="data-item">
+          <div class="label">魔法体系</div>
+          <div class="value">神殿魔法・軍事錬金術</div>
+        </div>
+        <div class="data-item">
+          <div class="label">カテゴリ</div>
+          <div class="value">南方諸国</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">LEGEND</div>
+      <h2>伝説の年代記</h2>
+      <p>神鳥アクイラの羽根から生まれた建国神話から始まる、ロマニア帝国の栄光と黄昏の記録。</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">鷲暦元年</div>
+          <div class="timeline-text">建国の英雄ロムルスが神鳥アクイラより七つの魔法石を授かり、ロマ市を創設。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">鷲暦27年</div>
+          <div class="timeline-text">初代神聖皇帝アウグストゥスが即位。神殿魔法と軍事錬金術が体系化される。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">鷲暦395年</div>
+          <div class="timeline-text">帝国が東西に分裂。西帝国は神殿魔法、東帝国は錬金術を継承する。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">鷲暦14世紀</div>
+          <div class="timeline-text">魔術ルネサンス勃興。ダ・ヴィンチが描いた「飛翔機械設計図」が魔導工学に革命をもたらす。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">鷲暦1861年</div>
+          <div class="timeline-text">分裂していた都市国家が統一。神聖鷲帝国として復活を遂げる。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">現鷲暦</div>
+          <div class="timeline-text">神殿魔法の聖地として世界中の魔導師が巡礼に訪れる。美食と芸術の魔都として繁栄。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">CULTURE</div>
+      <h2>文化と秘術</h2>
+      <p>「神殿に入れば魔力が増す」とされるロマニアの古神殿は、世界最大の魔力スポットとして知られる。魔法食材を使った料理「マジカル・クチーナ」は他国の魔導師も虜にする。神鳥アクイラを模した鷲紋章は、今も帝国の至る所に刻まれている。</p>
+    </div>
+
+    <footer>
+      <span>Fantasy History Map — 聖鷲帝国ロマニア</span>
+      <span>鷲暦2026年</span>
+    </footer>
+
+  </div>
+</body>
+</html>
